@@ -16,13 +16,15 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # Download webpage content from stackoverflow
 # Top 50 questions
 response = requests.get('https://stackoverflow.com/questions?sort=votes&pagesize=50')
+
 # Check whether the get request is successful
 # 200 means successful
 # 404 means unsuccessful
 response.status_code
 
 # Parsing webpage content into BeautifulSoup
-soup = bs(response.content, 'html.parser')
+soup = bs(response.content, 
+          'html.parser')
 # body tags
 body = soup.select_one('body')
 print(body)
@@ -30,6 +32,7 @@ type(body)
 
 # Extract all the question links
 question_links = body.select("h3 a.question-hyperlink")
+
 # Confirm there are 50 questions
 print(len(question_links))
 question_links[:5]
@@ -96,12 +99,11 @@ no_of_views[:5]
 
 # Combining everything into a dataframe
 df = pd.DataFrame({'Question': questions, 
-                       'Summary': summaries, 
-                       'Tags': tags,
-                       'Number of votes': no_of_votes,
-                       'Number of answers': no_of_answers,
-                       'Number of views': no_of_views})
-df.head()
+                   'Summary': summaries, 
+                   'Tags': tags,
+                   'Number of votes': no_of_votes,
+                   'Number of answers': no_of_answers,
+                   'Number of views': no_of_views})
 
 # Plot data
 f, ax = plt.subplots(3, 1, figsize=(12, 8))
