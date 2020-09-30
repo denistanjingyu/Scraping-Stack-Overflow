@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-#Import libraries and packages
+# Import libraries and packages
 import numpy as np
 import pandas as pd
 import requests
