@@ -62,10 +62,7 @@ a_tags_list = [i.select('a') for i in tags_divs]
 a_tags_list[0]
 
 #Extract tags names
-tags = []
-
-for a_group in a_tags_list:
-    tags.append([a.text for a in a_group])
+tags = [[a.text for a in a_group] for a_group in a_tags_list]
 
 print(len(tags))
 tags[:3]
